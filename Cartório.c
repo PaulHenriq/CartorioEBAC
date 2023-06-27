@@ -2,6 +2,7 @@
 #include <stdlib.h> //Biblioteca de alocação de espaço em memória
 #include <locale.h> //Biblioteca de alocações de texto por região
 #include <string.h> //Biblioteca responsável por cuidar das strings
+#include <windows.h>//Biblioteca de API's do windows
 
 int registro() //Função responsável por cadastrar os usuários no sistema
 {
@@ -117,53 +118,71 @@ int main() //Função principal, responsável por apresentar o menu ao usuário
 	
 	int laco=1; //Definindo Variável
 	
-	for (laco=1;laco=1;) // Início do operador de repetição
-	{
-		system ("cls"); // Responsável por limpar a tela
+	char senhadigitada[10] = "a"; // Criação de variável do tipo string
 	
-		setlocale(LC_ALL, "Portuguese"); //Definindo a Língua
+	int comparacao; //Definindo Variável
 	
-		printf("### Cartório da EBAC ###\n\n"); //Início do Menu
-		printf("Escolha a opção desejada do menu :\n\n");
-		printf("\t1 - Registrar nomes\n");
-		printf("\t2 - Consultar nomes\n");	
-		printf("\t3 - Deletar nomes\n"); 
-		printf("\t4 - Sair do sistema\n\n");
-		printf("Opção:"); // Fim do Menu
+	printf("### Cartório da EBAC ###\n\n"); 
+	printf("Login de Administrador!\n\nDigite a sua senha:");
+	scanf("%s",&senhadigitada); //Armazenando a senha digitada
 	
-		scanf("%d", &opcao); //Armazenando a escolha do usuário
-	
-		system("cls"); // responsável por limpar a tela 
+	comparacao = strcmp(senhadigitada, "admin"); //Definindo a comparação de strings
 		
-		switch(opcao) //início da seleção
+	if(comparacao == 0) // Início do operador de repetição
+	{ 
+		system("cls");
+		
+		for (laco=1;laco=1;) // Início do operador de repetição
 		{
-			case 1:
-			printf("Você escolheu registro de nomes!\n\n");
-			registro(); // Chamada da função reponsável por registrar
-			break;
-				
-			case 2:
-			printf("Você escolheu consultar nomes!\n\n");
-			consulta(); // Chamada da função responsável por consultar
-			break;
-				
-			case 3:
-			printf("Você escolheu deletar nomes!\n\n");
-			deletar(); // Chamada da função responsável por deletar 
-			break;
-			
-			case 4:
-			printf("Obrigado por utilizar o sistema!\n"); // Exibe a informação ao usuário
-			return 0;
-			break;
-				
-			default: 
-			printf("Essa opção não existe\n"); // Exibe a informação ao usuário 
-			system("pause");
-			break;
-			
-		}//Fim da seleção
+			setlocale(LC_ALL, "Portuguese"); //Definindo a Língua
 	
-	} // Fim do operador de repetição 
+			printf("### Cartório da EBAC ###\n\n"); //Início do Menu
+			printf("Escolha a opção desejada do menu :\n\n");
+			printf("\t1 - Registrar nomes\n");
+			printf("\t2 - Consultar nomes\n");	
+			printf("\t3 - Deletar nomes\n"); 
+			printf("\t4 - Sair do sistema\n\n");
+			printf("Opção:"); // Fim do Menu
+	
+			scanf("%d", &opcao); //Armazenando a escolha do usuário
+	
+			system("cls"); // responsável por limpar a tela 
+		
+			switch(opcao) //início da seleção
+			{
+				case 1:
+				printf("Você escolheu registro de nomes!\n\n");
+				registro(); // Chamada da função reponsável por registrar
+				break;
+				
+				case 2:
+				printf("Você escolheu consultar nomes!\n\n");
+				consulta(); // Chamada da função responsável por consultar
+				break;
+				
+				case 3:
+				printf("Você escolheu deletar nomes!\n\n");
+				deletar(); // Chamada da função responsável por deletar 
+				break;
+			
+				case 4:
+				printf("Obrigado por utilizar o sistema!\n"); // Exibe a informação ao usuário
+				return 0;
+				break;
+					
+				default: 
+				printf("Essa opção não existe\n"); // Exibe a informação ao usuário 
+				system("pause");
+				break;
+		
+			}//Fim da seleção
+			
+		} // Fim do operador de repetição
+		
+	}  //Fim do operador de repetição
+	
+	else
+		printf("Senha incorreta!");
+	
 } //Definição de Variável
 
